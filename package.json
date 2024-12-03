@@ -4,7 +4,7 @@
   "description": "RepMix é um projeto para gerenciar e organizar repertórios de músicas. Ele permite que músicos e bandas criem, editem e mantenham listas de músicas para apresentações ao vivo, ensaios e gravações.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "next dev"
   },
   "keywords": [],
   "author": "",
