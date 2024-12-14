@@ -11,7 +11,7 @@ type SongListProps = {
 
 export type Song = {
   id: number;
-  name: string;
+  title: string;
   tone: string;
 };
 
@@ -47,8 +47,7 @@ export const SongList = ({ songs, setSongs }: SongListProps) => {
                     {...provided.dragHandleProps}
                   >
                     <span className={styles.dragHandle}>⋮⋮</span>
-                    <span className={styles.songName}>{song.name}</span>
-                    <span className={styles.songName}>{index}</span>
+                    <span className={styles.songName}>{song.title}</span>
                     <span className={styles.songTone}>{song.tone}</span>
                   </li>
                 )}
