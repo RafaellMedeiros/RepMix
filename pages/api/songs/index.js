@@ -1,4 +1,4 @@
-import Songs from "model/songs.js";
+import Songs from "../../model/songs.js";
 
 export default async function handler(req, res) {
   try {
