@@ -1,7 +1,7 @@
 import database from "infra/database";
 
 export default function handler(req, res) {
-  database.testConnection();
+  // database.testConnection();
 
   res.status(200).json({
     songs: [
