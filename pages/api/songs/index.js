@@ -1,17 +1,31 @@
-import database from "infra/database";
+import Songs from "model/songs.js";
 
-export default function handler(req, res) {
-  database.testConnection();
+export default async function handler(req, res) {
+  try {
+    if (req.method === "POST") {
+      const { title, tone, position } = req.body;
+      await Songs.create({ title, tone, position });
+      res.status(201).json({ message: "Song created" });
+    }
 
-  res.status(200).json({
-    songs: [
-      { id: 1, name: "Song 1", tone: "D" },
-      { id: 2, name: "Song 2", tone: "E" },
-      { id: 3, name: "Song 3", tone: "F" },
-      { id: 4, name: "Song 4", tone: "G" },
-      { id: 5, name: "Song 5", tone: "A" },
-      { id: 6, name: "Song 6", tone: "B" },
-      { id: 7, name: "Song 7", tone: "C" },
-    ],
-  });
+    if (req.method === "GET") {
+      const songs = await Songs.findAll({
+        attributes: ["id", "title", "tone"],
+      });
+      res.status(200).json({ songs });
+    }
+
+    if (req.method === "PUT") {
+      await Songs.destroy({
+        where: {},
+        truncate: true,
+      });
+
+      await Songs.bulkCreate(req.body);
+      res.status(200).json({ message: "Song updated" });
+    }
+  } catch (error) {
+    console.error("Unable to connect to the database:", error);
+    res.status(400).end();
+  }
 }
