@@ -43,7 +43,7 @@ export const getSongs = async () => {
   try {
     // const response = await axios.get("https://rep-mix.vercel.app/api/songs");
     const response = await axios.get("api/songs");
-    const songs = response.data;
+    const songs = response.data.songs;
     return songs;
     // return songMocks;
   } catch (error) {
