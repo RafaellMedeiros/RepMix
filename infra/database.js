@@ -8,11 +8,10 @@ const getNewClient = () => {
     {
       host: process.env.POSTGRES_HOST,
       dialect: "postgres",
+      dialectModule: require("pg"),
       logging: false,
       dialectOptions: {
-        ssl: {
-          require: process.env.NODE_ENV === "production",
-        },
+        ssl: process.env.NODE_ENV === "production" ? { require: false } : null,
       },
     }
   );
