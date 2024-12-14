@@ -11,6 +11,7 @@ export default async function handler(req, res) {
     if (req.method === "GET") {
       const songs = await Songs.findAll({
         attributes: ["id", "title", "tone"],
+        order: [["position", "ASC"]],
       });
       res.status(200).json({ songs });
     }
