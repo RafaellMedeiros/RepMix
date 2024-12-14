@@ -1,4 +1,8 @@
+import database from "infra/database";
+
 export default function handler(req, res) {
+  database.testConnection();
+
   res.status(200).json({
     songs: [
       { id: 1, name: "Song 1", tone: "D" },
